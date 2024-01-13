@@ -13,3 +13,16 @@ Each sensor outputs some analog voltage, which is converted to a digital signal 
   <strong>Figure 1:</strong> System Top-Level Block Diagram.
 </p>
 
+This part of the design flow includes the following steps:
+- Create circuit schematics
+- Create the symbol view
+- Create simulation test-benches for typical model parameters
+
+Using the theoretical width-ratio between PMOS and NMOS transistors (approximately two) as a starting point, resize and re-simulate the transistor sizes so that:
+- Approximately equal rise and fall times of the signal pulses at the outputs are achieved, i.e. the cross-over point at around VDD/2.
+Gate propagation delay and power dissipation of the gates can be measured.
+- The gate performance can be measured as a function of varying the load capacitance.
+
+The Cadence technology will be used for the entirity of this project.
+
+# Design
