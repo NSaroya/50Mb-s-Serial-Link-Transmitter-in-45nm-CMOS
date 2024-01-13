@@ -42,13 +42,36 @@ MUX schematic with available inputs D0, D1, D2 and D3
 MUX testbench schematic with set input waveform parameters for testing the MUX block
 
 ### Test Bench Simulation
+
+|Input Voltage | Voltage 1 | Voltage 2 | Rise time | Fall time | Pulse width | Period  |
+|------------|---------------|-----------|-----------|-----------|-----------|-------------|
+| A          | 0             | 1.0       | 1p        | 1p        | 80n       | 160n        |         
+| B          | 0             | 1.0       | 1p        | 1p        | 40n       | 80n         |         
+| C          | 0             | 1.0       | 1p        | 1p        | 20n       | 40n         |         
+| D          | 0             | 1.0       | 1p        | 1p        | 10n       | 20n         |         
+
+4-INPUT NAND GATE SIMULATION VPULSE PARAMETERS.
+
 ![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/f07ee3d4-b31f-4f6f-a178-521f4e7076b1)
-3-input and 4-input NAND gate simulation results
+3-input and 4-input NAND gate simulation results. Transient Simulation time 200ns.
 
 |       | Tpdr (s)       | Tpdf (s)       |
 |-------|----------------|----------------|
 | NAND3 | 1.802E-11      | 1.197E-11      |
 | NAND4 | 2.831E-11      | 1.628E-11      |
+
+PROPOGATION DELAYS OF 4-INPUT NAND GATE 
+
+|Input  | Voltage 1 | Voltage 2 | Delay time | Rise time | Fall time | Pulse width | Period  |
+|----|----------------|-----------|-----------|------------|-----------|-----------|-------------|
+| S1 | 1.0            | 0         | -5n       | 1p         | 1p        | 40n       | 80n         |         
+| S0 | 1.0            | 0         | -5n       | 1p         | 1p        | 20n       | 40n         |         
+| A  | 0              | 1.0       | 0n        | 1p         | 1p        | 10n       | 80n         |         
+| B  | 1.0            | 0         | 20n       | 1p         | 1p        | 10n       | 80n         |         
+| C  | 0              | 1.0       | 40n       | 1p         | 1p        | 10n       | 80n         |         
+| D  | 1.0            | 0         | 60n       | 1p         | 1p        | 10n       | 80n         |         
+
+MUX SIMULATION VPULSE PARAMETERS.
 
 ![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/68058b12-f922-4a60-b94b-b384fd27ef27)
 MUX Timing Simulation to find the propagation delay of the MUX output with respect rising and falling edge of each of the 4 inputs
