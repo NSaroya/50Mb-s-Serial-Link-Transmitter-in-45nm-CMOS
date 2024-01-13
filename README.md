@@ -26,3 +26,40 @@ Gate propagation delay and power dissipation of the gates can be measured.
 The Cadence technology will be used for the entirity of this project.
 
 # Design
+## Invertor Design
+### Schematics
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/2bff407d-a949-4a0c-991a-58ea99e45138)
+
+## MUX AND NAND GATE DESIGN
+### Schematics
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/fb24fca9-41f3-4ccb-8207-798b9d6a5165)
+4-input NAND gate schematic
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/30bacd9d-6380-4de4-a4ac-b2d346114e10)
+MUX schematic with available inputs D0, D1, D2 and D3
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/132d0cff-4c06-4338-b0f0-f54ae6cae002)
+MUX testbench schematic with set input waveform parameters for testing the MUX block
+
+### Test Bench Simulation
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/f07ee3d4-b31f-4f6f-a178-521f4e7076b1)
+3-input and 4-input NAND gate simulation results
+
+|       | Tpdr (s)       | Tpdf (s)       |
+|-------|----------------|----------------|
+| NAND3 | 1.802E-11      | 1.197E-11      |
+| NAND4 | 2.831E-11      | 1.628E-11      |
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/68058b12-f922-4a60-b94b-b384fd27ef27)
+MUX Timing Simulation to find the propagation delay of the MUX output with respect rising and falling edge of each of the 4 inputs
+
+|     | Tpdr (s)       | Tpdf (s)       |
+|-----|----------------|----------------|
+| A   | 3.417E-10      | 3.0E-11        |
+| B   | 4.266E-10      | 3.89E-11       |
+| C   | 4.834E-10      | 4.52E-11       |
+| D   | 5.194E-10      | 4.84E-11       |
+
+To size the transistors of a n-input complementary logic NAND for equal pull-up and pull-down resistance assuming µn = 1.25µp. The NMOS transistors must be upsized by a factor of n so that each transistor resistance is R/n and effective pull-down resistance is R. In the pull-up network, the worse possible resistance is when only one PMOS transistor is active, and since µn = 1.25µp, we must up-size the PMOS transistor by a factor of 1.25 such that the effective resistance is 1.25*(R/k), where k = 1.25, hence the pull-up resistance is R. 
+
+
