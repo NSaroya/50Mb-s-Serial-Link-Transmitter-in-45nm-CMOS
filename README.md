@@ -137,3 +137,48 @@ The propagation delays tend to increase as the temperature increases. For proces
 The setup time is the minimum amount of time that the input data must be stable before the clock edge arrives. The setup time affects the maximum clock frequency as a shorter setup allows the input data to be stable for a shorter period before the clock edge arrives, which means that the circuit can operate at a higher frequency. The maximum clock frequency can be calculated using the equation, maximum clock frequency = 1/ (max data path delay – min clock path delay + Tsetup.
 
 During the falling edge transition, the output node needs to transition from a pre-charged high state to a low state. This discharge operation can take longer than the latching operation during the rising edge. Further, the parasitic capacitance of the output node is higher for the falling edge than the rising edge, which results in a longer propagation delay. 
+
+## PISO SHIFT REGISTER DESIGN
+
+The section to design 1-bit and 2-bit shift registers to show the demonstrate the functioning of PISO shift register. Further, multi variable parametric sweep simulations were performed to see how power changes with clock frequency and supply voltage. For a PISO shift register, to shift the data out, a clock signal is applied to the shift register. Each clock pulse triggers the movement of data from one flip-flop to the next in a cascading fashion. The most significant bit (MSB) is usually the first to be shifted out, followed by the remaining bits. The serial output provides the bits one at a time, in the order they were loaded. Observing the dynamic power consumption, we note when the power supply increases proportionally with increase in Vdd. 
+
+**Shift Register Cell Schematic**
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/e907ed1d-f3fb-4a75-93b4-453259950388)
+
+Schematic of 1 Bit Shift Register Cell – a sequential logic circuit that can store and shift binary data. 
+
+**2 Bit Shift Register Schematic**
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/c05a8005-cd7a-462e-99c9-aeb7dce25ac5)
+
+Realized by chaining two the shift registers in series. Pin Q of the first cell will be connected to pin b of the second cell and pin b of the first cell to be connected to vdd. 
+
+**2 Bit Shift Register Test Bench Schematic**
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/26938b97-1bc8-484c-b771-9c7ebe5b49a5)
+
+**2 Bit shift register simulation**
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/a8fe1e70-a25f-464a-9819-7eb88be9ed70)
+
+2-Bit Shift Register Simulation - To shift the data out, a clock signal is applied to the shift register. Each clock pulse triggers the movement of data from one flip-flop to the next in a cascading fashion. The most significant bit (MSB) is usually the first to be shifted out, followed by the remaining bits. The serial output provides the bits one at a time, in the order they were loaded.
+
+**Instantaneous Power Plot**
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/07a1d7be-6aa6-4d82-b18f-827e3ea8247f)
+
+Instantaneous Power Plot – we observed instantaneous power spikes when the D or Q signal transitions, this can be attributed towards the charging/discharging of load caps. 
+
+**Average Power Value and Average Power Plot**
+
+Average Power = 802.012 nW
+
+![image](https://github.com/NSaroya/50Mbps-Serial-Link-Transmitter-in-45nm-CMOS/assets/156468713/a99fa82e-0eb2-4c4f-9156-e7731dd42606)
+
+Average power plot vs Vsupply – Power consumption increases with Vsupply as a quadratic function
+
+If the rising edge of the clock signal does not coincide with the activation of the S = 1 signal, the shift register may not capture the intended data correctly. This can result in data loss or corruption as the shift register fails to update its internal state properly. The timing violation would lead to shift register display signs of metastability. 
+
+Increasing the clock frequency generally leads to higher power consumption due to increased switching activity and more frequent transitions between logic states. This is because the power dissipated in a digital circuit is directly proportional to the frequency at which the transistors switch states. The power consumed by a circuit is approximately proportional to the square of the voltage supply. Therefore, increasing the voltage supply can significantly increase power consumption. 
+
